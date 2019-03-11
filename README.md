@@ -2,7 +2,7 @@
 
 ### Tested Models
 
-# 1 $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+### 1 $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
 add a global spatial average pooling layer
 x = base_model.output
 x = GlobalAveragePooling2D()(x)
@@ -153,4 +153,97 @@ Epoch 00032: acc did not improve from 0.33055
 Epoch 00032: early stopping
 
 
-# 1 $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+### 1 $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+### 2 $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+
+add a global spatial average pooling layer
+x = base_model.output
+x = GlobalAveragePooling2D()(x)
+let's add a fully-connected layer
+x = Dense(1024, activation='relu')(x)
+and a logistic layer -- for this example we have 7 classes
+x = model.output
+x = Flatten()(x)
+x = Dropout(0.5)(x)
+x = Dense(1024, activation="relu")(x)
+predictions = Dense(7, activation='softmax')(x)
+this is the model we will train
+model = Model(inputs=base_model.input, outputs=predictions)
+
+
+
+
+Epoch 1/100
+1795/1795 [==============================] - 448s 250ms/step - loss: 1.8905 - acc: 0.2376
+
+Epoch 00001: acc improved from -inf to 0.23768, saving model to inception_v3
+Epoch 2/100
+1795/1795 [==============================] - 442s 246ms/step - loss: 1.8162 - acc: 0.2502
+
+Epoch 00002: acc improved from 0.23768 to 0.25015, saving model to inception_v3
+Epoch 3/100
+1795/1795 [==============================] - 446s 248ms/step - loss: 1.8105 - acc: 0.2507
+
+Epoch 00003: acc improved from 0.25015 to 0.25071, saving model to inception_v3
+Epoch 4/100
+1795/1795 [==============================] - 445s 248ms/step - loss: 1.8070 - acc: 0.2504
+
+Epoch 00004: acc did not improve from 0.25071
+Epoch 5/100
+1795/1795 [==============================] - 444s 247ms/step - loss: 1.7996 - acc: 0.2507
+
+Epoch 00005: acc improved from 0.25071 to 0.25081, saving model to inception_v3
+Epoch 6/100
+1795/1795 [==============================] - 444s 248ms/step - loss: 1.7968 - acc: 0.2507
+
+Epoch 00006: acc did not improve from 0.25081
+Epoch 7/100
+1795/1795 [==============================] - 445s 248ms/step - loss: 1.7925 - acc: 0.2547
+
+Epoch 00007: acc improved from 0.25081 to 0.25447, saving model to inception_v3
+Epoch 8/100
+1795/1795 [==============================] - 443s 247ms/step - loss: 1.7923 - acc: 0.2547
+
+Epoch 00008: acc improved from 0.25447 to 0.25450, saving model to inception_v3
+Epoch 9/100
+1795/1795 [==============================] - 444s 247ms/step - loss: 1.7899 - acc: 0.2550
+
+Epoch 00009: acc improved from 0.25450 to 0.25516, saving model to inception_v3
+Epoch 10/100
+1795/1795 [==============================] - 444s 248ms/step - loss: 1.7924 - acc: 0.2562
+
+Epoch 00010: acc improved from 0.25516 to 0.25631, saving model to inception_v3
+Epoch 11/100
+ 908/1795 [==============>...............] - ETA: 3:39 - loss: 1.7931 - acc: 0.2541
+
+### 3 $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+
+Epoch 1/50
+717/717 [==============================] - 47s 65ms/step - loss: 1.8064 - acc: 0.3106 - val_loss: 1.7123 - val_acc: 0.3453
+
+Epoch 00001: val_loss improved from inf to 1.71225, saving model to /data/emotion_models/fer2013_mini_XCEPTION.01-0.35.hdf5
+Epoch 2/50
+717/717 [==============================] - 42s 59ms/step - loss: 1.5491 - acc: 0.4186 - val_loss: 1.6067 - val_acc: 0.3932
+
+Epoch 00002: val_loss improved from 1.71225 to 1.60671, saving model to /data/emotion_models/fer2013_mini_XCEPTION.02-0.39.hdf5
+Epoch 3/50
+717/717 [==============================] - 42s 59ms/step - loss: 1.4238 - acc: 0.4713 - val_loss: 1.5781 - val_acc: 0.4310
+
+Epoch 00003: val_loss improved from 1.60671 to 1.57814, saving model to /data/emotion_models/fer2013_mini_XCEPTION.03-0.43.hdf5
+Epoch 4/50
+717/717 [==============================] - 43s 60ms/step - loss: 1.3481 - acc: 0.4966 - val_loss: 1.4967 - val_acc: 0.4673
+
+Epoch 00004: val_loss improved from 1.57814 to 1.49667, saving model to /data/emotion_models/fer2013_mini_XCEPTION.04-0.47.hdf5
+Epoch 5/50
+717/717 [==============================] - 42s 59ms/step - loss: 1.2982 - acc: 0.5168 - val_loss: 1.3704 - val_acc: 0.4855
+
+Epoch 00005: val_loss improved from 1.49667 to 1.37040, saving model to /data/emotion_models/fer2013_mini_XCEPTION.05-0.49.hdf5
+Epoch 6/50
+717/717 [==============================] - 43s 59ms/step - loss: 1.2597 - acc: 0.5280 - val_loss: 1.3118 - val_acc: 0.5162
+
+Epoch 00006: val_loss improved from 1.37040 to 1.31179, saving model to /data/emotion_models/fer2013_mini_XCEPTION.06-0.52.hdf5
+Epoch 7/50
+717/717 [==============================] - 43s 60ms/step - loss: 1.2297 - acc: 0.5395 - val_loss: 1.3198 - val_acc: 0.5166
+
+
+### 3 $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
