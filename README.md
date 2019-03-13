@@ -1,4 +1,8 @@
-# 
+# Emotion Detection with Transfer Learning
+
+### Overview
+Accurately identifying human emotions is a challenging task even for humans. With the help of deep neural networks, significant progress has been made in training algorithms to identify emotions. Here, we explore using transfer learning to retrain and refine complex deep neural networks with pre-trained weights.
+
 
 ### Tested Models
 
